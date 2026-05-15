@@ -37,13 +37,11 @@ fd = open(argv[1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (nr == -1)
 	{
 	syslog(LOG_ERR, "Unexpected error writing the string : %s : %s", argv[2], strerror(errno));
-  closelog();
+	closelog();
 	return 1;
 	}
 	
-syslog(LOG_DEBUG, "Successfully writing : %s to %s", argv[2], argv[1]);
-
-printf("Successfully wrote %zd to the file\n", nr);
+syslog(LOG_DEBUG, "Writing %s to %s", argv[2], argv[1]);
 
 close(fd);
 closelog();
